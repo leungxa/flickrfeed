@@ -1,0 +1,69 @@
+<html ng-app="myApp">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="flickr.css">
+  </head>
+
+  <body ng-controller="HomeController">
+    <h1 class="text-center">PUBLIC FLICKR FEED</h1>
+
+    <!-- image filter toggle -->
+    <div class="text-center">
+      <span>SHOWING:</span>
+      <div class="btn-group image-filter" data-toggle="buttons">
+        <label class="btn btn-primary" ng-class="{ 'active': showAll }">
+          <input type="checkbox" ng-checked="showAll" ng-click="setShowAll()">ALL IMAGES</input>
+        </label>
+        <label class="btn btn-primary" ng-class="{ 'active': showFavorites }">
+          <input type="checkbox" ng-checked="showFavorites" ng-click="setShowFavorites()">Favorites</input>
+        </label>
+      </div>
+    </div>
+
+    <!-- ALL IMAGES -->
+    <div class="container" ng-show="showAll && items" ng-cloak>
+      <div ng-repeat="item in items" class="img-container" ng-class="{'favorite': isFavorite(item)}">
+        <button type="button" ng-show="!(isFavorite(item))" ng-click="addFavorite(item)" class="btn btn-primary" ng-cloak>Favorite</button>
+        <button ng-hide="!(isFavorite(item))" ng-click="removeFavorite(item)" class="btn btn-primary"  ng-cloak>Unfavorite</button>
+        <div class="image">  
+          <img src="{{ item.media.m }}"></img>
+        </div>
+        <div class="info">
+          <p class="lead"> {{ item.title }} </p>
+          <p> By: {{ item.author }}</p>
+          <p> Date Taken: {{ item.date_taken | date:'MM-dd-yyyy' }}</p>
+          <p> Uploaded on: {{ item.published | date:'MM-dd-yyyy hh:mma' }}</p>
+          <p ng-show="{{ item.tags }}"> Tags: {{ item.tags }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ONLY FAVORITES -->
+    <div class="container" ng-show="showFavorites" ng-cloak>
+      <div ng-show="favoritesLength() == 0">
+        No favorites
+      </div>
+      <div ng-show="favoritesLength() > 0">
+        <!-- images -->
+        <div ng-repeat="item in favorites" class="img-container" ng-class="{'favorite': isFavorite(item)}">
+          <button type="button" ng-show="!(isFavorite(item))" ng-click="addFavorite(item)" class="btn btn-primary" ng-cloak>Favorite</button>
+          <button ng-hide="!(isFavorite(item))" ng-click="removeFavorite(item)" class="btn btn-primary"  ng-cloak>Unfavorite</button>
+          <div class="image">  
+            <img src="{{ item.media.m }}"></img>
+          </div>
+          <div class="info">
+            <p class="lead"> {{ item.title }} </p>
+            <p> By: {{ item.author }}</p>
+            <p> Date Taken: {{ item.date_taken | date:'MM-dd-yyyy' }}</p>
+            <p> Uploaded on: {{ item.published | date:'MM-dd-yyyy hh:mma' }}</p>
+            <p ng-show="{{ item.tags }}"> Tags: {{ item.tags }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

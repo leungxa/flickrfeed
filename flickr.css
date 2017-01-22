@@ -1,0 +1,27 @@
+.container {
+  width: 70%;
+}
+
+.container .favorite {
+  background-color: #91EF91;
+}
+
+.img-container {
+  width: 50%;
+  height: 500px;
+  display: inline-block;
+  border: 1px #000 solid;
+  margin-bottom: 20px;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.image {
+  background-color: #151515;
+}
+
+.image > img {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+}
