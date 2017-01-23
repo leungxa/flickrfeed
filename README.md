@@ -1,7 +1,7 @@
 # Flickrfeed
 
-## Github pages url
-https://leungxa.github.io/flickrfeed/
+## Github Pages URL
+Hosted at: https://leungxa.github.io/flickrfeed/
 
 # Features included in this project:
 - pulls images from flickr public feed and displays them in a scrollable layout
