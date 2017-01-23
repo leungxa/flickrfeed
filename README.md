@@ -34,7 +34,9 @@ using, I had to whitelist the Flickr API domain.
 # Outlook
 If I were to spend more time on the project I would look into the Angular testing frameworks
 and add a fully featured suite of unit tests instead of the basic tests currently implemented.
-Polishing out the UI would also enhance the experience. My next implementation would be the
-simple feature of accessing the full image via clicking on the preview. Also I think that a
-search functionality or a way to filter on tags would also be useful.
+Polishing out the UI would also enhance the experience. Currently there is a bit of code
+duplication in the html for displaying the image and its details, which could be reduced down
+to a singular reusable Angular directive. My next implementation would be the simple feature
+of accessing the full image via clicking on the preview. Also I think that a search functionality
+or a way to filter on tags would also be useful.
 
