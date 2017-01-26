@@ -7,7 +7,7 @@ app.config(function($sceDelegateProvider) {
     ]);
 });
 
-var FlickrAPI = function($http, $sce) {
+var FlickrAPI = function($http) {
   var apiService = this;
   apiService.getData = function(callback) {
     console.log('getting data');
@@ -18,7 +18,7 @@ var FlickrAPI = function($http, $sce) {
     }
   };
 };
-FlickrAPI.$inject = ['$http', '$sce'];
+FlickrAPI.$inject = ['$http'];
 app.service('FlickrAPI', FlickrAPI);
 
 
